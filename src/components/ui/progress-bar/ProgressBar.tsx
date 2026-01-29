@@ -46,7 +46,7 @@ export function ProgressBar({
 					max={value}
 					className="w-full h-2 opacity-0 absolute left-0 -top-0.5 cursor-pointer"
 					onChange={e => onSeek(+e.target.value)}
-					value={currentValue}
+					defaultValue={currentValue}
 				/>
 			</div>
 
