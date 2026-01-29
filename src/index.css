@@ -80,3 +80,20 @@ input {
 		opacity: 1;
 	}
 }
+
+.marquee-wrapper {
+	overflow: hidden;
+}
+
+.marquee-content {
+	animation: marquee 12s linear infinite;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}

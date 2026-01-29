@@ -1,9 +1,8 @@
 import { playerStore } from '@/store/player.store'
 import type { ITrack } from '@/types/track.types'
-import { Pause, Play } from 'lucide-react'
-
 import cn from 'clsx'
-
+import { Pause, Play } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 
@@ -12,6 +11,36 @@ interface Props {
 	title: string
 	subTitle: string
 	track?: ITrack
+}
+
+function MarqueeTitle({ title }: { title: string }) {
+	const containerRef = useRef<HTMLDivElement | null>(null)
+	const [isOverflow, setIsOverflow] = useState(false)
+
+	useEffect(() => {
+		const el = containerRef.current
+		if (!el) return
+
+		const checkOverflow = () => {
+			setIsOverflow(el.scrollWidth > el.clientWidth)
+		}
+
+		checkOverflow()
+		window.addEventListener('resize', checkOverflow)
+
+		return () => {
+			window.removeEventListener('resize', checkOverflow)
+		}
+	}, [title])
+
+	return (
+		<div className="marquee-wrapper max-w-[180px]" ref={containerRef}>
+			<div className={cn('inline-flex whitespace-nowrap', isOverflow && 'marquee-content')}>
+				<span>{title}</span>
+				{isOverflow && <span className="ml-8">{title}</span>}
+			</div>
+		</div>
+	)
 }
 
 export function TrackInfo({ title, subTitle, image, track }: Props) {
@@ -92,7 +121,7 @@ export function TrackInfo({ title, subTitle, image, track }: Props) {
 							{title}
 						</button>
 					) : (
-						title
+						<MarqueeTitle title={title} />
 					)}
 				</div>
 				<div>{subTitle}</div>
