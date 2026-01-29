@@ -44,9 +44,8 @@ export function ProgressBar({
 					type="range"
 					min={0}
 					max={value}
-					className=""
 					onChange={e => onSeek(+e.target.value)}
-					value={currentValue}
+					defaultValue={currentValue}
 				/>
 			</div>
 
