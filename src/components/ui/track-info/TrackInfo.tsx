@@ -24,6 +24,8 @@ export function TrackInfo({ title, subTitle, image, track }: Props) {
 					onClick={() => {
 						if (!isActive) {
 							playerStore.setTrack(track)
+							playerStore.play()
+							return
 						}
 
 						playerStore.togglePlayPause()

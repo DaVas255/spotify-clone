@@ -15,6 +15,18 @@ export const useAudioPlayer = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [playerStore.isPlaying])
 
+	useEffect(() => {
+		if (!audioRef.current) return
+
+		audioRef.current.volume = playerStore.volume / 100
+		audioRef.current.currentTime = 0
+
+		if (playerStore.isPlaying) {
+			audioRef.current.play()
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [playerStore.currentTrack?.file])
+
 	const togglePlayPause = () => {
 		if (!audioRef.current) return
 

@@ -15,6 +15,8 @@ class MusicPlayerStore {
 
 	setTrack(track: ITrack | null) {
 		this.currentTrack = track
+		this.currentTime = 0
+		this.progress = 0
 	}
 
 	togglePlayPause() {
