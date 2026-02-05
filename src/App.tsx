@@ -1,4 +1,3 @@
-import { Play } from 'lucide-react'
 import { useQueryState } from 'nuqs'
 import { useMemo } from 'react'
 import { SearchField } from './components/elements/search-field/SearchField'
@@ -6,7 +5,7 @@ import { Track } from './components/elements/track-item/Track'
 import { TRACKS } from './data/tracks.data'
 
 function App() {
-	const [searchTerm, setSearchTerm] = useQueryState('q')
+	const [searchTerm, setSearchTerm] = useQueryState('search')
 
 	const filteredTracks = useMemo(() => {
 		if (!searchTerm) return TRACKS
@@ -17,7 +16,7 @@ function App() {
 	}, [searchTerm])
 
 	return (
-		<div>
+		<>
 			<SearchField
 				value={searchTerm || ''}
 				onChange={e => setSearchTerm(e.target.value)}
@@ -26,7 +25,7 @@ function App() {
 			<div className="relative">
 				<img
 					src="/banner.jpg"
-					alt=""
+					alt="banner"
 					className="rounded-xl"
 				/>
 
@@ -37,13 +36,6 @@ function App() {
 						</h1>
 						<h2 className="text-primary font-medium">6.8m listeners</h2>
 					</div>
-
-					<button className="rounded-full bg-gradient-to-r from-[#2F3034] to-[#1F2026] p-5 border border-player-bg border-solid duration-300 hover:translate-y-[-2px] hover:shadow">
-						<Play
-							className="text-primary"
-							fill="var(--color-primary)"
-						/>
-					</button>
 				</div>
 			</div>
 
@@ -55,7 +47,7 @@ function App() {
 					/>
 				))}
 			</div>
-		</div>
+		</>
 	)
 }
 
