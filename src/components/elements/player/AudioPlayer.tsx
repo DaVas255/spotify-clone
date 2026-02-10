@@ -8,8 +8,7 @@ import {
 	Volume2
 } from 'lucide-react'
 
-import { ProgressBar } from '@/components/ui/progress-bar/ProgressBar'
-import { TrackInfo } from '@/components/ui/track-info/TrackInfo'
+import { ProgressBar, TrackInfo } from '@/components/ui'
 
 import { playerStore } from '@/store/player.store'
 

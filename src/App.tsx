@@ -1,9 +1,7 @@
 import { useQueryState } from 'nuqs'
 import { useMemo } from 'react'
 
-import { DynamicWaves } from './components/elements/WaveformVisualizer/DynamicWaves'
-import { SearchField } from './components/elements/search-field/SearchField'
-import { Track } from './components/elements/track-item/Track'
+import { DynamicWaves, SearchField, Track } from './components/elements'
 import { TRACKS } from './data/tracks.data'
 import { playlistStore } from './store/playlist.store'
 

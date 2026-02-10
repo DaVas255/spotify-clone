@@ -1,6 +1,6 @@
 import { Heart } from 'lucide-react'
 
-import { TrackInfo } from '@/components/ui/track-info/TrackInfo'
+import { TrackInfo } from '@/components/ui'
 
 import type { ITrack } from '@/types/track.types'
 
