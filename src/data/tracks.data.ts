@@ -1,4 +1,5 @@
 import type { ITrack } from '../types/track.types'
+
 import { ARTISTS } from './artist.data'
 
 export const TRACKS: ITrack[] = [

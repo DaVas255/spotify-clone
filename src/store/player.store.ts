@@ -1,6 +1,8 @@
-import { TRACKS } from '@/data/tracks.data'
-import type { ITrack } from '@/types/track.types'
 import { makeAutoObservable } from 'mobx'
+
+import type { ITrack } from '@/types/track.types'
+
+import { TRACKS } from '@/data/tracks.data'
 
 class MusicPlayerStore {
 	isPlaying: boolean = false

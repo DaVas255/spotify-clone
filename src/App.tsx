@@ -1,8 +1,9 @@
 import { useQueryState } from 'nuqs'
 import { useMemo } from 'react'
+
+import { DynamicWaves } from './components/elements/WaveformVisualizer/DynamicWaves'
 import { SearchField } from './components/elements/search-field/SearchField'
 import { Track } from './components/elements/track-item/Track'
-import { DynamicWaves } from './components/elements/WaveformVisualizer/DynamicWaves'
 import { TRACKS } from './data/tracks.data'
 import { playlistStore } from './store/playlist.store'
 
@@ -14,7 +15,7 @@ function App() {
 		const playlistTracks =
 			playlistName && playlistStore.playlists.length
 				? playlistStore.playlists.find(p => p.name === playlistName)?.tracks ||
-				[]
+					[]
 				: null
 
 		const base = playlistTracks
@@ -37,7 +38,7 @@ function App() {
 
 			<DynamicWaves />
 
-			<div className="mt-5">
+			<div className='mt-5'>
 				{filteredTracks.map(track => (
 					<Track
 						key={track.name}

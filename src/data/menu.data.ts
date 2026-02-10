@@ -1,5 +1,7 @@
-import type { IMenuItem } from '@/types/menu.types'
 import { Compass, Home, Radio } from 'lucide-react'
+
+import type { IMenuItem } from '@/types/menu.types'
+
 import { PagesConfig } from '../config/pages.config'
 
 export const MENU_ITEMS: IMenuItem[] = [

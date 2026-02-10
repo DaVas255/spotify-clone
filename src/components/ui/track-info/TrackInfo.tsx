@@ -1,10 +1,12 @@
-import { playerStore } from '@/store/player.store'
-import type { ITrack } from '@/types/track.types'
 import cn from 'clsx'
 import { Pause, Play } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { CircularProgressbar } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
+
+import type { ITrack } from '@/types/track.types'
+
+import { playerStore } from '@/store/player.store'
 
 interface Props {
 	image: string
@@ -34,10 +36,18 @@ function MarqueeTitle({ title }: { title: string }) {
 	}, [title])
 
 	return (
-		<div className="marquee-wrapper max-w-[180px]" ref={containerRef}>
-			<div className={cn('inline-flex whitespace-nowrap', isOverflow && 'marquee-content')}>
+		<div
+			className='marquee-wrapper max-w-[180px]'
+			ref={containerRef}
+		>
+			<div
+				className={cn(
+					'inline-flex whitespace-nowrap',
+					isOverflow && 'marquee-content'
+				)}
+			>
 				<span>{title}</span>
-				{isOverflow && <span className="ml-8">{title}</span>}
+				{isOverflow && <span className='ml-8'>{title}</span>}
 			</div>
 		</div>
 	)
@@ -47,7 +57,7 @@ export function TrackInfo({ title, subTitle, image, track }: Props) {
 	const isActive = playerStore.currentTrack?.name === track?.name
 
 	return (
-		<div className="flex items-center gap-3">
+		<div className='flex items-center gap-3'>
 			{track ? (
 				<button
 					onClick={() => {
@@ -59,12 +69,12 @@ export function TrackInfo({ title, subTitle, image, track }: Props) {
 
 						playerStore.togglePlayPause()
 					}}
-					className="block relative group"
+					className='block relative group'
 				>
 					{isActive && (
 						<CircularProgressbar
 							value={playerStore.progress}
-							className="absolute"
+							className='absolute'
 							strokeWidth={5}
 							styles={{
 								trail: { stroke: '#2E3235' },
@@ -95,19 +105,19 @@ export function TrackInfo({ title, subTitle, image, track }: Props) {
 					<img
 						src={image}
 						alt={title}
-						className="w-12 h-12 rounded-full m-1.5"
+						className='w-12 h-12 rounded-full m-1.5'
 					/>
 				</button>
 			) : (
 				<img
 					src={image}
 					alt={title}
-					className="w-12 h-12 rounded-full"
+					className='w-12 h-12 rounded-full'
 				/>
 			)}
 
 			<div>
-				<div className="text-white text-lg font-medium">
+				<div className='text-white text-lg font-medium'>
 					{track ? (
 						<button
 							onClick={() => {
@@ -116,7 +126,7 @@ export function TrackInfo({ title, subTitle, image, track }: Props) {
 									playerStore.play()
 								}
 							}}
-							className="hover:underline"
+							className='hover:underline'
 						>
 							{title}
 						</button>

@@ -1,10 +1,12 @@
-import { CustomMenu } from '@/components/ui/custom-menu/CustomMenu'
-import { playlistStore } from '@/store/playlist.store'
-import type { ITrack } from '@/types/track.types'
+import cn from 'clsx'
 import { Ellipsis } from 'lucide-react'
 import { useState } from 'react'
 
-import cn from 'clsx'
+import { CustomMenu } from '@/components/ui/custom-menu/CustomMenu'
+
+import type { ITrack } from '@/types/track.types'
+
+import { playlistStore } from '@/store/playlist.store'
 
 interface Props {
 	track: ITrack
@@ -14,14 +16,14 @@ export function AddToPlaylist({ track }: Props) {
 	const [isShow, setIsShow] = useState(false)
 
 	return (
-		<div className="relative">
+		<div className='relative'>
 			<button onClick={() => setIsShow(prev => !prev)}>
-				<Ellipsis className="opacity-30 duration-300 hover:opacity-100" />
+				<Ellipsis className='opacity-30 duration-300 hover:opacity-100' />
 			</button>
 
 			{isShow && (
-				<CustomMenu side="right">
-					<div className="p-1.5 space-y-1.5">
+				<CustomMenu side='right'>
+					<div className='p-1.5 space-y-1.5'>
 						{playlistStore.playlists.map(playlist => {
 							const isAdded = playlistStore.isTrackInPlaylist(
 								playlist.name,

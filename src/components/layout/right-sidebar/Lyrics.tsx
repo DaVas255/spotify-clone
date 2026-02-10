@@ -1,8 +1,10 @@
-import { LYRICS } from '@/data/lyrics.data'
-import { playerStore } from '@/store/player.store'
 import { Play } from 'lucide-react'
 import { Fragment } from 'react/jsx-runtime'
+
+import { playerStore } from '@/store/player.store'
+
 import styles from './Lyrics.module.scss'
+import { LYRICS } from '@/data/lyrics.data'
 
 export function Lyrics() {
 	const lyric = LYRICS.find(
@@ -27,7 +29,7 @@ export function Lyrics() {
 						<p>
 							{playerStore.currentTime === line.time && (
 								<Play
-									fill="var(--color-primary)"
+									fill='var(--color-primary)'
 									className={styles.icon}
 									size={10}
 								/>

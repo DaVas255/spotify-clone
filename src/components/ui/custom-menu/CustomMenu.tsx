@@ -14,8 +14,8 @@ export function CustomMenu({ children, side }: Props) {
 				side === 'left'
 					? 'left-0'
 					: side === 'right'
-					? 'right-0'
-					: 'left-1/2 -translate-x-1/2'
+						? 'right-0'
+						: 'left-1/2 -translate-x-1/2'
 			)}
 			style={{ top: 'calc(100% + 0.5rem)' }}
 		>

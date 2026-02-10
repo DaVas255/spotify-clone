@@ -1,8 +1,12 @@
-import { CustomMenu } from '@/components/ui/custom-menu/CustomMenu'
-import { PagesConfig } from '@/config/pages.config'
-import { playlistStore } from '@/store/playlist.store'
 import { Plus } from 'lucide-react'
 import { useState } from 'react'
+
+import { CustomMenu } from '@/components/ui/custom-menu/CustomMenu'
+
+import { PagesConfig } from '@/config/pages.config'
+
+import { playlistStore } from '@/store/playlist.store'
+
 import { Menu } from './Menu'
 
 export function SidebarPlaylists() {
@@ -15,22 +19,22 @@ export function SidebarPlaylists() {
 				name: playlist.name,
 				link: `${PagesConfig.HOME}?playlist=${encodeURIComponent(playlist.name)}`
 			}))}
-			title="Playlists"
+			title='Playlists'
 		>
-			<div className="relative">
+			<div className='relative'>
 				<button
-					className="flex items-center gap-1.5 mt-5 bg-zinc-700/30 py-2 px-3.5 rounded-md  duration-300 transition-colors hover:bg-zinc-700/50"
+					className='flex items-center gap-1.5 mt-5 bg-zinc-700/30 py-2 px-3.5 rounded-md  duration-300 transition-colors hover:bg-zinc-700/50'
 					onClick={() => setIsShow(prev => !prev)}
 				>
 					<Plus /> <span>New Playlist</span>
 				</button>
 
 				{isShow && (
-					<CustomMenu side="left">
+					<CustomMenu side='left'>
 						<input
 							autoFocus
-							type="text"
-							placeholder="Playlist name"
+							type='text'
+							placeholder='Playlist name'
 							value={value}
 							onChange={e => setValue(e.target.value)}
 							onKeyDown={e => {
@@ -39,7 +43,7 @@ export function SidebarPlaylists() {
 									setValue('')
 								}
 							}}
-							className="rounded-md px-3 py-2 w-full"
+							className='rounded-md px-3 py-2 w-full'
 						/>
 					</CustomMenu>
 				)}
