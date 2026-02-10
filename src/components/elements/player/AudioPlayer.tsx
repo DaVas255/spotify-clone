@@ -33,7 +33,6 @@ export function AudioPlayer() {
 				src={playerStore.currentTrack.file}
 				onTimeUpdate={e => {
 					const currentTime = Math.floor(e.currentTarget.currentTime)
-					// console.log(currentTime)
 					playerStore.seek(currentTime)
 				}}
 				onEnded={() => (playerStore.isPlaying = false)}
@@ -65,7 +64,7 @@ export function AudioPlayer() {
 
 				<ProgressBar
 					currentValue={playerStore.currentTime}
-					value={playerStore.currentTrack.duration}
+					maxValue={playerStore.currentTrack.duration}
 					progress={playerStore.progress}
 					onSeek={(time: number) => onSeek(time)}
 					isTextDisplayed
@@ -84,7 +83,7 @@ export function AudioPlayer() {
 
 					<ProgressBar
 						currentValue={playerStore.volume}
-						value={100}
+						maxValue={100}
 						progress={playerStore.volume}
 						onSeek={(value: number) => setVolume(value)}
 						isThumbDisplayed={false}

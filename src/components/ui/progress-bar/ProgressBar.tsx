@@ -2,7 +2,7 @@ import { transformDuration } from '@/utils/transform-duration'
 
 interface Props {
 	currentValue: number
-	value: number
+	maxValue: number
 	progress: number
 	onSeek: (time: number) => void
 	isTextDisplayed?: boolean
@@ -11,7 +11,7 @@ interface Props {
 
 export function ProgressBar({
 	currentValue,
-	value,
+	maxValue,
 	progress,
 	onSeek,
 	isTextDisplayed,
@@ -43,7 +43,7 @@ export function ProgressBar({
 				<input
 					type="range"
 					min={0}
-					max={value}
+					max={maxValue}
 					className="w-full h-2 opacity-0 absolute left-0 -top-0.5 cursor-pointer"
 					onChange={e => onSeek(+e.target.value)}
 					defaultValue={currentValue}
@@ -51,7 +51,7 @@ export function ProgressBar({
 			</div>
 
 			{isTextDisplayed && (
-				<span className="text-white/50">{transformDuration(value)}</span>
+				<span className="text-white/50">{transformDuration(maxValue)}</span>
 			)}
 		</div>
 	)
