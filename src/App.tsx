@@ -3,17 +3,29 @@ import { useMemo } from 'react'
 import { SearchField } from './components/elements/search-field/SearchField'
 import { Track } from './components/elements/track-item/Track'
 import { TRACKS } from './data/tracks.data'
+import { playlistStore } from './store/playlist.store'
 
 function App() {
 	const [searchTerm, setSearchTerm] = useQueryState('search')
+	const [playlistName] = useQueryState('playlist')
 
 	const filteredTracks = useMemo(() => {
-		if (!searchTerm) return TRACKS
+		const playlistTracks =
+			playlistName && playlistStore.playlists.length
+				? playlistStore.playlists.find(p => p.name === playlistName)?.tracks ||
+				  []
+				: null
 
-		return TRACKS.filter(track =>
+		const base = playlistTracks
+			? TRACKS.filter(track => playlistTracks.includes(track.name))
+			: TRACKS
+
+		if (!searchTerm) return base
+
+		return base.filter(track =>
 			track.name.toLowerCase().includes(searchTerm.toLowerCase())
 		)
-	}, [searchTerm])
+	}, [playlistName, searchTerm])
 
 	return (
 		<>

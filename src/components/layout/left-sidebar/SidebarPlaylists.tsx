@@ -13,7 +13,7 @@ export function SidebarPlaylists() {
 		<Menu
 			items={playlistStore.playlists.map(playlist => ({
 				name: playlist.name,
-				link: PagesConfig.PLAYLIST(playlist.name)
+				link: `${PagesConfig.HOME}?playlist=${encodeURIComponent(playlist.name)}`
 			}))}
 			title="Playlists"
 		>
